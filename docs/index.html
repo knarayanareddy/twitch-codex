@@ -98,6 +98,18 @@
       background: linear-gradient(145deg, #18181b 0%, #1e1b2e 100%);
       border-color: rgba(145, 70, 255, 0.5);
     }
+    .card-featured-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 860px) {
+      .card-featured-body {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: center;
+      }
+    }
     .card h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -122,6 +134,39 @@
       padding: 0.25rem 0.55rem;
       border-radius: 6px;
       font-weight: 500;
+    }
+    .video-preview {
+      background: #09090b;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+    .video-preview video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      object-fit: contain;
+    }
+    .video-caption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background: #141417;
+      border-top: 1px solid var(--card-border);
+    }
+    .video-dl-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .video-dl-link:hover {
+      text-decoration: underline;
     }
     .actions {
       display: flex;
@@ -185,26 +230,40 @@
     <header>
       <div class="badge">TwitchCon Codex Hackathon 2026</div>
       <h1>Interactive <span>Demo Hub</span></h1>
-      <p class="lead">Four production-grade Twitch participation prototypes designed for streamer authority, ethical audience interaction, and broadcast-first overlay graphics.</p>
+      <p class="lead">Four production-grade Twitch participation prototypes designed for streamer authority, ethical audience interaction, and broadcast-first overlay graphics. Walkthrough demo videos and interactive sandboxes are available below.</p>
     </header>
 
     <div class="grid">
-      <!-- Card 1: Habitat Relay -->
+      <!-- Card 1: Habitat Relay (Flagship) -->
       <article class="card card-featured">
-        <div>
-          <div class="card-meta">
-            <span class="badge badge-success">🏆 Flagship Submission</span>
-            <span class="tag">🟢 Live on Cloud (Render)</span>
-            <span class="tag">123 Tests Passed (94% Coverage)</span>
-            <span class="tag">Full EventSub WebSocket</span>
+        <div class="card-featured-body">
+          <div>
+            <div class="card-meta">
+              <span class="badge badge-success">🏆 Flagship Submission</span>
+              <span class="tag">🟢 Live on Cloud (Render)</span>
+              <span class="tag">123 Tests Passed (94% Coverage)</span>
+              <span class="tag">Full EventSub WebSocket</span>
+            </div>
+            <h2>Habitat Relay — Pollinator Corridor Simulation</h2>
+            <p>A streamer-led, community-powered ecosystem simulation. Viewers vote (<code style="color:var(--accent);">!habitat 1</code> / <code style="color:var(--accent);">!habitat 2</code>) on ecological interventions within a strict 6-token fictional budget. Features full streamer approval on every round, safe undo, dynamic SVG landscape progression, and verified citations from the European Environment Agency and UN FAO.</p>
+            <div class="actions">
+              <a class="btn" href="https://habitat-relay.onrender.com" target="_blank" rel="noopener">Launch Live Cloud Studio ↗</a>
+              <a class="btn btn-secondary" href="https://habitat-relay.onrender.com/?view=overlay" target="_blank" rel="noopener">OBS Overlay Source ↗</a>
+              <a class="btn btn-outline" href="https://github.com/knarayanareddy/habitat-relay" target="_blank" rel="noopener">Standalone GitHub Repo ↗</a>
+            </div>
           </div>
-          <h2>Habitat Relay — Pollinator Corridor Simulation</h2>
-          <p>A streamer-led, community-powered ecosystem simulation. Viewers vote (<code style="color:var(--accent);">!habitat 1</code> / <code style="color:var(--accent);">!habitat 2</code>) on ecological interventions within a strict 6-token fictional budget. Features full streamer approval on every round, safe undo, dynamic SVG landscape progression, and verified citations from the European Environment Agency and UN FAO.</p>
-        </div>
-        <div class="actions">
-          <a class="btn" href="https://habitat-relay.onrender.com" target="_blank" rel="noopener">Launch Live Cloud Studio ↗</a>
-          <a class="btn btn-secondary" href="https://habitat-relay.onrender.com/?view=overlay" target="_blank" rel="noopener">OBS Overlay Source ↗</a>
-          <a class="btn btn-outline" href="https://github.com/knarayanareddy/habitat-relay" target="_blank" rel="noopener">Standalone GitHub Repo ↗</a>
+          <div>
+            <div class="video-preview" style="margin-bottom:0;">
+              <video controls playsinline preload="metadata" poster="./images/habitat-relay-poster.jpg">
+                <source src="./videos/habitat-relay-demo.webm" type="video/webm">
+                Your browser does not support WebM video.
+              </video>
+              <div class="video-caption">
+                <span>🎬 Habitat Relay Studio & Overlay Walkthrough</span>
+                <a href="./videos/habitat-relay-demo.webm" download class="video-dl-link">Download (1.7 MB) ↗</a>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -218,6 +277,16 @@
           </div>
           <h2>Context Desk</h2>
           <p>A calm newsroom research desk designed to combat live stream misinformation. Turns moderator questions (<code style="color:var(--accent);">!context &lt;question&gt;</code>) into verified evidence cards with uncertainty caveats and transparent OBS overlay cards.</p>
+          <div class="video-preview">
+            <video controls playsinline preload="metadata" poster="./images/context-desk-poster.jpg">
+              <source src="./videos/context-desk-demo.webm" type="video/webm">
+              Your browser does not support WebM video.
+            </video>
+            <div class="video-caption">
+              <span>🎬 Newsroom Card & Queue Walkthrough</span>
+              <a href="./videos/context-desk-demo.webm" download class="video-dl-link">Download (803 KB) ↗</a>
+            </div>
+          </div>
         </div>
         <div class="actions">
           <a class="btn" href="./context-desk/index.html">Open Review Studio ↗</a>
@@ -236,6 +305,16 @@
           </div>
           <h2>Quiet Quest</h2>
           <p>An access-first cooperative community game designed for low-pressure participation. Full parity between Twitch chat (<code style="color:var(--accent);">!help 1-3</code>) and a mobile-friendly, keyboard-accessible web companion. No speed bonuses, no leaderboards, no viewer callouts.</p>
+          <div class="video-preview">
+            <video controls playsinline preload="metadata" poster="./images/quiet-quest-poster.jpg">
+              <source src="./videos/quiet-quest-demo.webm" type="video/webm">
+              Your browser does not support WebM video.
+            </video>
+            <div class="video-caption">
+              <span>🎬 Accessible Questing Walkthrough</span>
+              <a href="./videos/quiet-quest-demo.webm" download class="video-dl-link">Download (1.3 MB) ↗</a>
+            </div>
+          </div>
         </div>
         <div class="actions">
           <a class="btn" href="./quiet-quest/index.html">Open Studio ↗</a>
@@ -254,6 +333,16 @@
           </div>
           <h2>Open Lab Live</h2>
           <p>Participatory science stream experiment format: <strong>Predict → Choose → Reveal → Learn</strong>. Audience predicts surface absorption (<code style="color:var(--accent);">!predict 1-3</code>), operator runs a deterministic seeded model conserving energy units, and reveals the source-backed explanation.</p>
+          <div class="video-preview">
+            <video controls playsinline preload="metadata" poster="./images/open-lab-poster.jpg">
+              <source src="./videos/open-lab-demo.webm" type="video/webm">
+              Your browser does not support WebM video.
+            </video>
+            <div class="video-caption">
+              <span>🎬 Laboratory Simulation Walkthrough</span>
+              <a href="./videos/open-lab-demo.webm" download class="video-dl-link">Download (2.9 MB) ↗</a>
+            </div>
+          </div>
         </div>
         <div class="actions">
           <a class="btn" href="./open-lab-live/index.html">Open Field Notebook ↗</a>
