@@ -11,6 +11,8 @@ This repository contains four independent, fully tested implementations explorin
 All projects are located in [`twitch_hackathon_specs/`](twitch_hackathon_specs/):
 
 ### 1. [Habitat Relay](twitch_hackathon_specs/habitat-relay/) *(Recommended Submission)*
+- **Live Demo:** [https://habitat-relay.onrender.com](https://habitat-relay.onrender.com)
+- **Standalone Repo:** [knarayanareddy/habitat-relay](https://github.com/knarayanareddy/habitat-relay)
 - **Concept:** A streamer-led, community-powered pollinator habitat simulation. Viewers vote (`!habitat 1` / `!habitat 2`) on ecological interventions within a fictional 6-token budget.
 - **Key Features:** Full streamer authority (ties/pluralities require approval, safe undo, discard), dynamic SVG landscape, AES-256-GCM encrypted Twitch OAuth tokens, and EventSub WebSocket reader.
 - **Verification:** 123/123 tests passing (94% coverage), 6 Playwright E2E journeys, automated axe WCAG 2.2 scans, and recorded video rehearsal.
