@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Local SQLite databases & journals
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+**/*.sqlite
+**/*.sqlite-shm
+**/*.sqlite-wal
+
+# Local secrets & session keys
+**/data/.*-key
+**/data/.*-secret
+**/data/.context-desk-*
+**/data/.open-lab-*
+**/data/.quiet-quest-*
+
+# OS files
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.sudo_as_admin_successful
+
+# Test and coverage artifacts
+coverage/
+**/coverage/
+playwright-report/
+**/playwright-report/
+test-results/
+**/test-results/

@@ -1,0 +1,193 @@
+{
+  "version": "1.1.0",
+  "roundDurationMs": 90000,
+  "rounds": [
+    {
+      "id": "flowers",
+      "number": 1,
+      "eyebrow": "01 / FOOD & FLOWERS",
+      "title": "Make room for food",
+      "prompt": "Which change should this landscape try first?",
+      "sourceId": "eea-pollinator-habitats-2025",
+      "options": [
+        {
+          "id": "wildflower-strip",
+          "number": "01",
+          "label": "Plant native wildflower strips",
+          "shortLabel": "Wildflower strips",
+          "description": "Add seasonally varied forage along field edges.",
+          "effects": {
+            "forage": 22,
+            "diversity": 8,
+            "connectivity": 5,
+            "nesting": 0,
+            "resilience": 4
+          },
+          "note": "The scenario models more available forage; it does not predict a real population change.",
+          "cost": 2
+        },
+        {
+          "id": "lighter-mowing",
+          "number": "02",
+          "label": "Mow less often in selected areas",
+          "shortLabel": "Mow less often",
+          "description": "Leave selected patches undisturbed for longer.",
+          "effects": {
+            "forage": 14,
+            "diversity": 10,
+            "connectivity": 3,
+            "nesting": 2,
+            "resilience": 5
+          },
+          "note": "The scenario represents one possible management choice; timing and local conditions matter.",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "id": "shelter",
+      "number": 2,
+      "eyebrow": "02 / PLACES TO NEST",
+      "title": "Create safe shelter",
+      "prompt": "Where should the habitat make more room?",
+      "sourceId": "eea-pollinator-habitats-2025",
+      "options": [
+        {
+          "id": "retain-deadwood",
+          "number": "01",
+          "label": "Keep some deadwood and old trees",
+          "shortLabel": "Keep deadwood",
+          "description": "Preserve a mix of natural nesting and overwintering places.",
+          "effects": {
+            "forage": 0,
+            "diversity": 8,
+            "connectivity": 4,
+            "nesting": 22,
+            "resilience": 6
+          },
+          "note": "The EEA briefing describes deadwood and veteran trees as important for some pollinators.",
+          "cost": 2
+        },
+        {
+          "id": "protect-soil",
+          "number": "02",
+          "label": "Protect undisturbed soil patches",
+          "shortLabel": "Protect soil",
+          "description": "Leave selected ground patches undisturbed.",
+          "effects": {
+            "forage": 2,
+            "diversity": 5,
+            "connectivity": 3,
+            "nesting": 19,
+            "resilience": 7
+          },
+          "note": "The EEA briefing notes that many wild bees nest below ground; the simulation is illustrative.",
+          "cost": 1
+        }
+      ]
+    },
+    {
+      "id": "connections",
+      "number": 3,
+      "eyebrow": "03 / CONNECT THE PATCHES",
+      "title": "Make the landscape work together",
+      "prompt": "What should link the habitat patches?",
+      "sourceId": "eea-pollinator-habitats-2025",
+      "options": [
+        {
+          "id": "connect-patches",
+          "number": "01",
+          "label": "Connect semi-natural habitat patches",
+          "shortLabel": "Connect patches",
+          "description": "Build a more continuous route between habitat areas.",
+          "effects": {
+            "forage": 7,
+            "diversity": 9,
+            "connectivity": 22,
+            "nesting": 3,
+            "resilience": 8
+          },
+          "note": "The EEA briefing emphasizes habitat diversity and connectivity at landscape scale.",
+          "cost": 3
+        },
+        {
+          "id": "seasonal-diversity",
+          "number": "02",
+          "label": "Add a wider mix of flowering periods",
+          "shortLabel": "Seasonal variety",
+          "description": "Spread resources across more of the season.",
+          "effects": {
+            "forage": 15,
+            "diversity": 17,
+            "connectivity": 6,
+            "nesting": 1,
+            "resilience": 9
+          },
+          "note": "This authored scenario models a diversified resource calendar; it is not a field forecast.",
+          "cost": 1
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "forage": 26,
+    "nesting": 20,
+    "connectivity": 18,
+    "diversity": 24,
+    "resilience": 22
+  },
+  "metricLabels": {
+    "forage": "Seasonal forage",
+    "nesting": "Nesting places",
+    "connectivity": "Habitat links",
+    "diversity": "Habitat variety",
+    "resilience": "Landscape resilience"
+  },
+  "sources": {
+    "habitat": {
+      "id": "eea-pollinator-habitats-2025",
+      "title": "Protecting and restoring Europe’s wild pollinators and their habitats",
+      "publisher": "European Environment Agency",
+      "published": "2025-06-18",
+      "url": "https://www.eea.europa.eu/en/analysis/publications/protecting-and-restoring-europes-wild-pollinators-and-their-habitats",
+      "checked": "2026-10-28",
+      "supports": "Habitat diversity and connectivity, wildflower strips, and pollinator-friendly management are among approaches discussed for supporting wild pollinators."
+    },
+    "fao": {
+      "id": "fao-pollination-2026",
+      "title": "Global Action on Pollination Services for Sustainable Agriculture",
+      "publisher": "Food and Agriculture Organization of the United Nations",
+      "published": null,
+      "url": "https://www.fao.org/pollination/about/en",
+      "checked": "2026-10-28",
+      "supports": "Pollinators include a diversity of wild and managed species; their relationships to crops and ecosystems are broader than honeybees alone."
+    },
+    "ivn-garden-guidance": {
+      "id": "ivn-garden-guidance",
+      "title": "Tuinieren: tips en inspiratie",
+      "publisher": "IVN Natuureducatie",
+      "published": null,
+      "url": "https://www.ivn.nl/aanbod/tuinieren/",
+      "checked": "2026-10-28",
+      "supports": "Practical inspiration for choosing flowering plants and greening gardens for wildlife and neighbourhoods."
+    }
+  },
+  "actions": [
+    {
+      "id": "ivn-wildlife-friendly-garden",
+      "title": "Try one small wildlife-friendly change",
+      "label": "Explore garden ideas from IVN",
+      "description": "If you have a garden or shared green space, explore locally appropriate ways to provide varied flowering plants or shelter. This is optional; no purchase, pledge, or data collection is required.",
+      "publisher": "IVN Natuureducatie",
+      "sourceId": "ivn-garden-guidance",
+      "url": "https://www.ivn.nl/aanbod/tuinieren/",
+      "checked": "2026-10-28",
+      "optional": true
+    }
+  ],
+  "resourceBudget": {
+    "initial": 6,
+    "label": "Fictional field tokens",
+    "note": "A game-only planning limit. Tokens are not money, materials, or a real restoration budget."
+  }
+}

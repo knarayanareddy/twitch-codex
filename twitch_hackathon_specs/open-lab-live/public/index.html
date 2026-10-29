@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f4f0e5">
+  <title>Open Lab Live · Field notebook</title><link rel="icon" href="/public/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/public/css/app.css"><script type="module" src="/public/js/studio.js"></script>
+</head>
+<body>
+  <div id="login" class="login-wrap" hidden>
+    <main class="login-card" aria-labelledby="login-title">
+      <a class="brand" href="/" aria-label="Open Lab Live"><span class="brand-symbol" aria-hidden="true">◒</span><span>OPEN LAB <b>LIVE</b></span></a>
+      <p class="eyebrow">A LIVE FIELD NOTEBOOK</p><h1 id="login-title">Make a prediction.<br>See the model.</h1>
+      <p class="intro-copy">Open the operator desk for a source-backed, local science simulation. Demo mode is clearly marked and does not connect to Twitch.</p>
+      <form id="login-form" class="login-form"><label for="passcode">Operator passphrase</label><input id="passcode" type="password" autocomplete="current-password" required><button class="button primary" type="submit">Open the field notebook <span aria-hidden="true">↗</span></button><p id="login-error" class="form-error" role="alert" hidden></p></form>
+      <p class="login-note">No model provider. No viewer profiles. No scientific forecast.</p>
+    </main>
+  </div>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Open Lab Live home"><span class="brand-symbol" aria-hidden="true">◒</span><span>OPEN LAB <b>LIVE</b></span></a>
+      <nav aria-label="Notebook sections"><a href="#experiment">Experiment</a><a href="#recap">Run notes</a><a href="/privacy">Data & limits</a></nav>
+      <div class="top-controls"><span id="mode-badge" class="mode-badge">DEMO · SIMULATION</span><button id="sign-out" class="button text small" type="button">Sign out</button></div>
+    </header>
+
+    <main class="shell">
+      <section class="hero">
+        <div><p class="eyebrow">FIELD NOTE 01 <span>·</span> ALBEDO</p><h1>Light in,<br><em>light back.</em></h1><p id="lesson-objective" class="hero-copy">Explore how a surface’s reflectivity changes the share of incoming light absorbed in a simple model.</p></div>
+        <aside class="hero-stamp" aria-label="Lesson details"><span class="stamp-mark" aria-hidden="true">A</span><div><strong>One controlled variable</strong><span id="lesson-level">Accessible science · grades 6–8</span><span id="reading-level">Plain language with short sentences.</span></div></aside>
+      </section>
+
+      <section class="setup-strip" aria-labelledby="setup-title">
+        <div class="setup-copy"><p class="eyebrow">LESSON SETUP <span>·</span> <span id="lesson-version">v1.0.0</span></p><h2 id="setup-title">A small model, clearly bounded.</h2><p>Predict which surface absorbs the largest share of the same incoming light. Then choose one condition, run the arithmetic model, and compare.</p></div>
+        <div class="setup-actions"><span class="readiness"><i aria-hidden="true"></i><span id="connection-readiness">Local demo ready · Twitch integration pending</span></span><button id="preview-demo" class="button primary" type="button">Preview the full demo <span aria-hidden="true">→</span></button><button id="live-pending" class="button outline" type="button" disabled aria-describedby="live-note">Live on Twitch · integration pending</button><span id="live-note" class="help-text">No Twitch authorization or chat connection is active in this build.</span></div>
+      </section>
+
+      <details class="lesson-disclosure">
+        <summary><span>What this model represents</span><span class="summary-hint">Open lesson notes</span></summary>
+        <div class="disclosure-grid">
+          <div><p class="eyebrow">IT REPRESENTS</p><ul id="represents-list"></ul></div>
+          <div><p class="eyebrow">IT DOES NOT REPRESENT</p><ul id="limits-list"></ul></div>
+          <div class="source-mini"><p class="eyebrow">SOURCE · CHECKED <span id="source-checked"></span></p><h3 id="source-title">NASA Science · Explore Albedo Activity</h3><p id="source-supports"></p><a id="source-link" href="#" target="_blank" rel="noopener noreferrer">Read the source <span aria-hidden="true">↗</span></a><p class="tiny-note">The source supports the principle, not this prototype’s chosen percentages or outputs.</p><p class="tiny-note"><strong>Safe prompt:</strong> <span id="safe-prompt"></span></p><p class="tiny-note"><strong>Out of scope:</strong> <span id="unsafe-prompt"></span></p><p id="moderation-note" class="tiny-note"></p><p class="tiny-note"><strong>Rule:</strong> <span id="model-rule"></span></p></div>
+        </div>
+      </details>
+
+      <section id="experiment" class="experiment-layout" aria-labelledby="control-title">
+        <div class="operator-column">
+          <section id="empty-state" class="panel empty-panel">
+            <div class="section-heading"><div><p class="eyebrow">CONTROL ROOM</p><h2 id="control-title">Ready to begin?</h2></div><span class="state-tag">READY</span></div>
+            <div class="ready-illustration" aria-hidden="true"><div class="light-ray"></div><div class="surface-dark"></div><div class="surface-mid"></div><div class="surface-light"></div><span>REFLECTIVITY SETTINGS · NOT MATERIAL MEASUREMENTS</span></div>
+            <p class="ready-copy">Start a local prediction window. The demo uses fixed, labelled sample voters; it is not a chat event.</p>
+            <button id="start-demo" class="button primary large" type="button">Start demo predictions <span aria-hidden="true">→</span></button>
+          </section>
+
+          <section id="session-panel" class="panel session-panel" aria-labelledby="session-title" hidden>
+            <div class="section-heading"><div><p class="eyebrow">CONTROL ROOM <span>·</span> <span id="phase-index">PREDICT</span></p><h2 id="session-title">Which surface absorbs the most?</h2></div><div class="phase-indicators"><span id="phase-tag" class="state-tag" aria-live="polite" aria-atomic="true">PREDICT</span><span id="round-clock" class="round-clock">1:30</span></div></div>
+            <p id="phase-guidance" class="phase-guidance">Type one prediction in chat. It is a vote, not a measurement.</p>
+            <div class="prompt-card"><p class="eyebrow">QUESTION ON STREAM</p><p id="prompt-text" class="question-text">With the same incoming light, which surface will absorb the most in this model?</p><p class="prompt-footnote">Incoming energy is fixed for the run. Only reflectivity changes.</p></div>
+
+            <div class="tally-head"><div><p class="eyebrow">AGGREGATE PREDICTIONS</p><strong><span id="prediction-total">0</span> <span id="prediction-word">predictions</span></strong></div><span id="sample-note" class="sample-note">No individual answers are shown.</span></div>
+            <div id="prediction-list" class="prediction-list" aria-label="Aggregate prediction counts"></div>
+            <p id="prediction-quiet-note" class="quiet-note">Small group? That is participation data, not a representative survey.</p>
+
+            <fieldset id="parameter-fieldset" class="parameter-fieldset" hidden><legend>Choose the condition to test in the model</legend><p id="selection-note" class="selection-note">The leading prediction is preselected. You may test any one condition.</p><div id="parameter-choices" class="parameter-choices"></div></fieldset>
+
+            <section id="experiment-result" class="experiment-result" role="status" aria-labelledby="result-title" aria-atomic="true" hidden>
+              <div class="result-lede"><span class="result-symbol" aria-hidden="true">↗</span><div><p class="eyebrow">MODEL RESULT · NOT A MEASUREMENT</p><h3 id="result-title">The model has finished.</h3><p id="result-explanation"></p></div></div>
+              <div id="comparison-table" class="comparison-table" role="group" aria-label="Text comparison of all three model settings"></div>
+              <p class="result-limit">This rule does not calculate temperature, ice melt, or climate. The source card is shown on the overlay and in the recap.</p>
+            </section>
+
+            <div id="session-controls" class="session-controls">
+              <div class="primary-action"><button id="primary-action" class="button primary large" type="button">Start predictions</button><p id="primary-hint" class="help-text"></p></div>
+              <button id="pause-action" class="button outline" type="button" hidden>Pause</button>
+              <button id="reset-action" class="button text" type="button" hidden>Reset</button>
+              <button id="stop-action" class="button text" type="button" hidden>End session</button>
+            </div>
+
+            <section id="demo-tools" class="demo-tools" hidden aria-labelledby="demo-tools-title">
+              <div><p class="eyebrow">LOCAL FIXTURE · NOT CHAT</p><h3 id="demo-tools-title">Add a sample prediction</h3><p>Each sample voter can predict once this cycle.</p></div>
+              <div class="demo-vote-controls"><label for="demo-voter">Sample voter</label><select id="demo-voter"><option value="sample-1">Sample voter A</option><option value="sample-2">Sample voter B</option><option value="sample-3">Sample voter C</option><option value="sample-4">Sample voter D</option><option value="sample-5">Sample voter E</option></select><label for="demo-choice">Prediction</label><select id="demo-choice"></select><button id="add-sample-vote" class="button outline" type="button">Add simulated prediction</button><span id="demo-feedback" role="status" aria-live="polite"></span></div>
+            </section>
+            <p id="operator-feedback" class="operator-feedback" role="status" aria-live="polite"></p>
+          </section>
+        </div>
+
+        <aside class="preview-column" aria-labelledby="preview-title">
+          <div class="preview-head"><div><p class="eyebrow">BROADCAST PREVIEW</p><h2 id="preview-title">Exact OBS surface</h2></div><a id="open-overlay" href="/overlay?preview=1" target="_blank" rel="noopener noreferrer" class="text-link">Open source ↗</a></div>
+          <div class="overlay-frame"><iframe id="overlay-preview" src="/overlay?preview=1" title="Exact read-only Open Lab Live overlay preview"></iframe></div>
+          <p class="preview-caption"><span>TRANSPARENT CANVAS</span><span>NO RUNTIME FONT OR IMAGE REQUESTS</span></p>
+          <div class="input-contract"><p class="eyebrow">VIEWER INPUT</p><p>Type <code>!predict 1</code>, <code>!predict 2</code>, or <code>!predict 3</code> before predictions close. In this build, commands appear only as clearly labelled demo fixtures.</p></div>
+        </aside>
+      </section>
+
+      <section id="recap" class="panel recap-panel" aria-labelledby="recap-heading">
+        <div class="section-heading"><div><p class="eyebrow">RUN NOTES · AGGREGATE ONLY</p><h2 id="recap-heading">Experiment recap</h2></div><div class="export-actions"><a id="export-json" class="button text small" href="/api/recap/export.json">JSON <span aria-hidden="true">↓</span></a><a id="export-md" class="button text small" href="/api/recap/export.md">Markdown <span aria-hidden="true">↓</span></a></div></div>
+        <div id="recap-list" class="recap-list"><p class="empty-copy">Completed reveals appear here with the audience prediction, selected condition, model output, assumptions, and citation.</p></div>
+      </section>
+      <footer class="footer"><span>Open Lab Live <span aria-hidden="true">·</span> Prototype, not a scientific instrument.</span><span>No external model. No raw chat text or viewer names in run notes.</span></footer>
+    </main>
+  </div>
+  <dialog id="confirm-dialog" class="confirm-dialog" aria-labelledby="confirm-title"><form method="dialog"><p class="eyebrow">OPERATOR CONTROL</p><h2 id="confirm-title">Reset the current run?</h2><p id="confirm-copy">Votes and any unrevealed calculation will clear. Earlier reveals remain in the recap.</p><div class="dialog-actions"><button class="button text" value="cancel">Keep this run</button><button id="confirm-reset" class="button primary" value="confirm">Reset to ready</button></div></form></dialog>
+  <div id="toast-region" class="sr-status" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

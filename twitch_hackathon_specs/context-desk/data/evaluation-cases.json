@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Small, hand-labelled functional checks for the deterministic Solar System Basics pack. Not a scientific accuracy benchmark.",
+  "cases": [
+    {
+      "id": "planet-definition-supported",
+      "label": "in-scope stable definition",
+      "question": "Why does Pluto not meet the IAU planet definition?",
+      "expectedState": "review-required",
+      "expectedEvidenceIds": ["nasa-planet-definition"]
+    },
+    {
+      "id": "distance-units-supported",
+      "label": "in-scope stable scale comparison",
+      "question": "What is the difference between a light-year and an astronomical unit?",
+      "expectedState": "review-required",
+      "expectedEvidenceIds": ["nasa-cosmic-distances"]
+    },
+    {
+      "id": "classification-nuance",
+      "label": "contested terminology; caveat and human review required",
+      "question": "Why do some people dispute the IAU definition of a planet?",
+      "expectedState": "review-required",
+      "expectedEvidenceIds": ["nasa-planet-definition"]
+    },
+    {
+      "id": "medical-block",
+      "label": "out-of-scope professional advice",
+      "question": "Can you diagnose these symptoms and recommend a treatment?",
+      "expectedState": "out-of-scope",
+      "expectedEvidenceIds": []
+    },
+    {
+      "id": "volatile-count-block",
+      "label": "no-answer / changing live count",
+      "question": "What is the current count of Saturn moons right now?",
+      "expectedState": "insufficient-evidence",
+      "expectedEvidenceIds": ["nasa-moons-facts"]
+    },
+    {
+      "id": "unsupported-interior-detail",
+      "label": "no-answer / unsupported specific measurement",
+      "question": "What is Jupiter's precise core temperature today?",
+      "expectedState": "insufficient-evidence",
+      "expectedEvidenceIds": []
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "id": "albedo-lab",
+  "version": "1.0.0",
+  "title": "Light in, light back",
+  "level": "Accessible science · roughly grades 6–8",
+  "objective": "Explore how a surface’s reflectivity changes the share of incoming light absorbed in a simple model.",
+  "prompt": "With the same incoming light, which surface will absorb the most in this model?",
+  "predictionWindowMs": 90000,
+  "incomingEnergyOptions": [
+    80,
+    100,
+    120
+  ],
+  "incomingEnergyLabel": "model energy units",
+  "choices": [
+    {
+      "id": "dark",
+      "number": "1",
+      "label": "Dark surface",
+      "shortLabel": "Dark · low reflectivity",
+      "albedoPercent": 20,
+      "swatch": "#263541",
+      "description": "The model reflects 20% of incoming light."
+    },
+    {
+      "id": "mid",
+      "number": "2",
+      "label": "Mid-tone surface",
+      "shortLabel": "Mid-tone · medium reflectivity",
+      "albedoPercent": 50,
+      "swatch": "#8b9291",
+      "description": "The model reflects 50% of incoming light."
+    },
+    {
+      "id": "light",
+      "number": "3",
+      "label": "Light surface",
+      "shortLabel": "Light · high reflectivity",
+      "albedoPercent": 80,
+      "swatch": "#f0ead8",
+      "description": "The model reflects 80% of incoming light."
+    }
+  ],
+  "simulation": {
+    "id": "absorbed-fraction-v1",
+    "formula": "absorbed = round(incomingEnergy × (100 − albedoPercent) ÷ 100); reflected = incomingEnergy − absorbed",
+    "outputLabel": "Model energy absorbed",
+    "unit": "model units",
+    "seedNote": "The session seed selects one fixed incoming-energy level (80, 100, or 120 model units). It is a replay key, not a weather or climate simulation."
+  },
+  "whatItRepresents": [
+    "A controlled comparison: all three surfaces receive the same model input, and differ only in the selected reflectivity setting.",
+    "Albedo as the share of incoming light reflected; the remaining share is absorbed in this simplified calculation."
+  ],
+  "whatItDoesNotRepresent": [
+    "A real surface, measured temperature, ice-melt rate, local forecast, or climate prediction.",
+    "Wavelength-dependent reflectivity, material texture, angle of sunlight, heat capacity, evaporation, atmosphere, or feedbacks."
+  ],
+  "assumptions": [
+    "The 20%, 50%, and 80% albedo settings are authored teaching scenarios, not measurements of named materials.",
+    "Only the chosen albedo changes within a run; the seed fixes the same incoming model energy for every comparison.",
+    "The output is arithmetic in model units. It must not be read as watts, degrees, or a real-world measurement."
+  ],
+  "source": {
+    "id": "nasa-explore-albedo",
+    "title": "Explore Albedo Activity",
+    "publisher": "NASA Science",
+    "published": "2023-10",
+    "url": "https://science.nasa.gov/wp-content/uploads/2023/10/Explore-Albedo-Activity.pdf",
+    "checked": "2026-10-29",
+    "supports": "Defines albedo as how much light a surface reflects and explains that higher albedo reflects more while lower albedo absorbs more. NASA’s activity supports the principle, not this prototype’s three illustrative percentages or its toy outputs."
+  },
+  "inputContract": {
+    "commands": [
+      "!predict 1",
+      "!predict 2",
+      "!predict 3"
+    ],
+    "freeTextAccepted": false,
+    "note": "Only the exact numbered commands map to choices. Other chat text is ignored and not retained; no free-form science question is sent to a model."
+  },
+  "readingLevel": "Plain language with short sentences.",
+  "startingState": {
+    "incomingEnergyOptions": [
+      80,
+      100,
+      120
+    ],
+    "incomingEnergySelection": "The session seed selects exactly one incoming-energy value and keeps it fixed across all three choices.",
+    "selectedChoiceId": null
+  },
+  "expectedOutputs": {
+    "unit": "model units",
+    "goldenVectors": [
+      {
+        "seed": "golden-2",
+        "incomingEnergy": 80,
+        "results": [
+          {
+            "choiceId": "dark",
+            "absorbedEnergy": 64,
+            "reflectedEnergy": 16
+          },
+          {
+            "choiceId": "mid",
+            "absorbedEnergy": 40,
+            "reflectedEnergy": 40
+          },
+          {
+            "choiceId": "light",
+            "absorbedEnergy": 16,
+            "reflectedEnergy": 64
+          }
+        ]
+      },
+      {
+        "seed": "golden-0",
+        "incomingEnergy": 100,
+        "results": [
+          {
+            "choiceId": "dark",
+            "absorbedEnergy": 80,
+            "reflectedEnergy": 20
+          },
+          {
+            "choiceId": "mid",
+            "absorbedEnergy": 50,
+            "reflectedEnergy": 50
+          },
+          {
+            "choiceId": "light",
+            "absorbedEnergy": 20,
+            "reflectedEnergy": 80
+          }
+        ]
+      },
+      {
+        "seed": "golden-1",
+        "incomingEnergy": 120,
+        "results": [
+          {
+            "choiceId": "dark",
+            "absorbedEnergy": 96,
+            "reflectedEnergy": 24
+          },
+          {
+            "choiceId": "mid",
+            "absorbedEnergy": 60,
+            "reflectedEnergy": 60
+          },
+          {
+            "choiceId": "light",
+            "absorbedEnergy": 24,
+            "reflectedEnergy": 96
+          }
+        ]
+      }
+    ]
+  },
+  "moderationExamples": {
+    "safe": [
+      "Which numbered surface do you predict will absorb the most in this model?",
+      "!predict 1, !predict 2, or !predict 3 before the window closes."
+    ],
+    "outOfScope": [
+      "Give me instructions for making a dangerous device.",
+      "Diagnose a health condition from a photo."
+    ],
+    "handlingNote": "Only the exact numbered prediction commands are accepted. These examples document streamer boundaries; this local build has no chat moderation or free-text classifier."
+  },
+  "overlayAssumption": "Assumptions: the 20%, 50%, and 80% settings are illustrative, not material measurements; incoming model energy stays fixed for every comparison.",
+  "variables": {
+    "heldConstant": {
+      "id": "incoming-energy",
+      "label": "Incoming model energy",
+      "unit": "model units",
+      "values": [
+        80,
+        100,
+        120
+      ],
+      "selectedBy": "session seed",
+      "perRun": "fixed across all choices"
+    },
+    "changed": {
+      "id": "albedo-percent",
+      "label": "Illustrative reflectivity",
+      "unit": "percent",
+      "values": [
+        20,
+        50,
+        80
+      ],
+      "selectedBy": "operator after aggregate prediction window"
+    }
+  }
+}

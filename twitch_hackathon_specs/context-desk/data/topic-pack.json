@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "id": "solar-system-basics",
+  "title": "Solar System Basics",
+  "topic": "A bounded, low-stakes introduction to solar-system terminology, objects, and scale.",
+  "scope": "Definitions and stable concepts about planets, dwarf planets, moons, asteroids, comets, astronomical units, and light-years. This pack does not provide current object counts, mission status, impact predictions, astrology, or personalized advice.",
+  "policy": {
+    "allowedInput": "Short educational questions about stable Solar System concepts.",
+    "outOfScope": [
+      "Medical, legal, financial, emergency, or safety advice",
+      "Personal accusations, private information, or questions about identifiable people",
+      "Political persuasion, astrology, predictions, or speculative claims framed as established fact",
+      "Breaking news, current risk assessments, and exact live counts that can change",
+      "Questions without relevant evidence in this pack"
+    ],
+    "retentionHours": 24,
+    "modelProvider": "none",
+    "draftingMode": "Curated, deterministic templates only. No model call is made."
+  },
+  "sources": [
+    {
+      "id": "nasa-planet-definition",
+      "sourceTitle": "What is a Planet?",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/planets/what-is-a-planet/",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "NASA's explainer describes the International Astronomical Union's 2006 definition: a planet orbits the Sun, is nearly round because of its own gravity, and has cleared its orbital neighbourhood. Pluto meets the first two criteria but not the third under that definition. The page also notes that terminology and classification continue to be discussed.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "83d054153c00caa005e852d06eac5b57f8bbca710a260f1031872780e98514b1",
+      "licenseUsageNote": "No NASA page text is republished verbatim. This is an original short paraphrase with attribution and a link; NASA and third-party media terms remain with their owners.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "planet",
+        "planets",
+        "definition",
+        "pluto",
+        "dwarf",
+        "orbit",
+        "cleared",
+        "round",
+        "iau"
+      ]
+    },
+    {
+      "id": "jpl-planet-definition",
+      "sourceTitle": "What is a Planet?",
+      "publisher": "NASA Jet Propulsion Laboratory, Solar System Dynamics",
+      "url": "https://ssd.jpl.nasa.gov/planets/def.html",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "JPL summarizes the same IAU criteria and distinguishes a dwarf planet as a Sun-orbiting, nearly round body that has not cleared its orbital neighbourhood and is not a satellite. This is a classification definition, not a prediction that every astronomical community will use the same wording.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "feda79bd2b8ba3171bb673b85f130004b2c53934733a248a1932abc99bfbedc8",
+      "licenseUsageNote": "No page text is republished verbatim. Original paraphrase for context only; follow the source link for the primary definition and attribution.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "planet",
+        "definition",
+        "pluto",
+        "dwarf",
+        "iau",
+        "orbit",
+        "satellite",
+        "neighbourhood"
+      ]
+    },
+    {
+      "id": "nasa-solar-system-facts",
+      "sourceTitle": "Solar System Facts",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/solar-system-facts/",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "NASA describes the Solar System as the Sun and the objects bound to it, including planets, dwarf planets, moons, asteroids, and comets. The system extends beyond the familiar planets to regions such as the Kuiper Belt; the source's object counts can change as discoveries and confirmations are updated.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "47b88287d9f7be653189cfa7bd9314d3fbc23c78b41df13b7ec82f6e10daa83b",
+      "licenseUsageNote": "No NASA page text is republished verbatim. Original concise paraphrase with attribution. Counts are intentionally not copied into the pack.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "solar",
+        "system",
+        "sun",
+        "planet",
+        "planets",
+        "asteroid",
+        "comet",
+        "kuiper",
+        "dwarf",
+        "moon"
+      ]
+    },
+    {
+      "id": "nasa-cosmic-distances",
+      "sourceTitle": "Cosmic Distances",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/cosmic-distances/",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "NASA explains that an astronomical unit (AU) is approximately the Earth–Sun distance, about 150 million kilometres, and is useful within the Solar System. A light-year is a distance travelled by light in one year, about 9 trillion kilometres, and is more practical for distances between stars; despite its name, it is a unit of distance, not time.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "0d1a25a64ae56cd0f594f6c4b69bf1a564aa1d92881988b2bcac9f4455276724",
+      "licenseUsageNote": "No NASA page text is republished verbatim. Numerical values are rounded paraphrases; consult the linked source for details and measurement conventions.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "distance",
+        "distances",
+        "light",
+        "year",
+        "light-year",
+        "au",
+        "astronomical",
+        "unit",
+        "sun",
+        "earth",
+        "kilometres",
+        "kilometers",
+        "star"
+      ]
+    },
+    {
+      "id": "nasa-moons-facts",
+      "sourceTitle": "Moons: Facts",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/moons/facts/",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "NASA's overview describes moons orbiting planets, dwarf planets, and smaller bodies, with a wide variety of sizes and environments. The page contains changing discovery and recognition counts; this pack deliberately does not freeze an exact current total or per-planet count.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "68788e5f44ebcab76572bcef76022dbaf9b3a4a9336830f1f097993bb64e686f",
+      "licenseUsageNote": "No NASA page text is republished verbatim. Original paraphrase. Exact moon totals are excluded because they change over time.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "asteroid",
+        "count",
+        "moon",
+        "moons",
+        "number",
+        "orbit",
+        "planet",
+        "pluto",
+        "satellite",
+        "satellites",
+        "saturn"
+      ]
+    },
+    {
+      "id": "nasa-comet-facts",
+      "sourceTitle": "Comet Facts",
+      "publisher": "NASA Science",
+      "url": "https://science.nasa.gov/solar-system/comets/facts/",
+      "publishedAt": null,
+      "checkedAt": "2026-10-28",
+      "excerpt": "NASA describes comets as icy remnants from the early Solar System. As a comet approaches the Sun, its warming ices release gas and dust, producing a coma and sometimes a tail shaped in part by sunlight and the solar wind. The broad description does not identify the status or risk of any particular comet.",
+      "retrievalMethod": "team-authored paraphrase; local lexical match",
+      "contentHash": "f66b681fe3f1353793afbfca75170bf7537e72159f18413d7432ef6a5f50ecc3",
+      "licenseUsageNote": "No NASA page text is republished verbatim. Original paraphrase and short context only; specific comet facts require a current source check.",
+      "sourcePackVersion": "1.0.0",
+      "keywords": [
+        "comet",
+        "comets",
+        "ice",
+        "tail",
+        "coma",
+        "sun",
+        "solar",
+        "wind",
+        "dust",
+        "early",
+        "formation"
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "id": "pluto-classification",
+      "question": "Why is Pluto called a dwarf planet?",
+      "expectedState": "review-required",
+      "expectedEvidenceIds": [
+        "nasa-planet-definition",
+        "jpl-planet-definition"
+      ]
+    },
+    {
+      "id": "light-year-vs-au",
+      "question": "What is a light-year, and how is it different from an AU?",
+      "expectedState": "review-required",
+      "expectedEvidenceIds": [
+        "nasa-cosmic-distances"
+      ]
+    },
+    {
+      "id": "changing-moon-count",
+      "question": "How many moons does Saturn have right now?",
+      "expectedState": "insufficient-evidence",
+      "expectedEvidenceIds": [
+        "nasa-moons-facts"
+      ]
+    }
+  ],
+  "publicPromptTemplates": [
+    {
+      "id": "planet-definition",
+      "question": "Why is Pluto classified as a dwarf planet?"
+    },
+    {
+      "id": "cosmic-distances",
+      "question": "How do an astronomical unit and a light-year differ?"
+    },
+    {
+      "id": "comet-tails",
+      "question": "Why can a comet grow a tail near the Sun?"
+    }
+  ]
+}

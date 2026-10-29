@@ -1,0 +1,29 @@
+{
+  "name": "habitat-relay",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A streamer-led, community-powered pollinator habitat simulation for Twitch.",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "test:coverage": "node --experimental-test-coverage --test",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e",
+    "demo:record": "node scripts/record-demo.js",
+    "check": "node --check src/server.js && node --check public/js/app.js && npm test"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "dotenv": "^16.6.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.64.1"
+  }
+}

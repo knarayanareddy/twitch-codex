@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fbf7ef"><title>Join the garden · Quiet Quest</title><link rel="icon" href="/public/mark.svg" type="image/svg+xml"><link rel="stylesheet" href="/public/css/app.css"><script type="module" src="/public/js/companion.js"></script></head>
+<body class="companion-page">
+  <header class="companion-top"><a class="brand" href="/" aria-label="Quiet Quest"><span class="brand-mark" aria-hidden="true">Q</span><span>Quiet <strong>Quest</strong></span></a><span class="quiet-label">A CO-OP GAME · NO RUSH</span></header>
+  <main class="companion-main">
+    <p class="eyebrow">YOUR CONTRIBUTION COUNTS</p><h1>Help grow the<br>shared garden<span>.</span></h1>
+    <p class="lead">Choose one way to help. Every action adds the same amount, and speed does not matter. Your browser contribution is anonymous and is not linked to a Twitch identity.</p>
+    <section id="join-panel" class="panel join-panel" aria-labelledby="join-title"><p class="eyebrow">STEP 1 · JOIN THIS SESSION</p><h2 id="join-title">Enter the streamer’s session code</h2><form id="join-form"><label for="session-code">Session code</label><div class="join-input-row"><input id="session-code" name="code" autocomplete="off" spellcheck="false" inputmode="text" aria-describedby="code-help join-feedback" required><button class="button primary" type="submit">Join the garden <span aria-hidden="true">→</span></button></div><p id="code-help" class="field-help">Paste the temporary code shared by the streamer. It only permits a contribution to this active session.</p><p id="join-feedback" class="status-line" role="status" aria-live="polite"></p></form></section>
+    <section id="contribute-panel" class="panel contribute-panel" aria-labelledby="contribute-title" hidden><p class="eyebrow">STEP 2 · CHOOSE ONE ACTION</p><div class="session-status"><div><h2 id="contribute-title">What would you like to add?</h2><p id="round-status" class="muted">Round status loading…</p></div><span id="phase-pill" class="phase-pill">Round open</span></div>
+      <form id="contribution-form"><fieldset id="action-choices" class="action-choices"><legend class="visually-hidden">Choose one equal-value contribution</legend></fieldset><button id="contribute-button" class="button primary contribute-button" type="submit">Add my contribution <span aria-hidden="true">→</span></button><p id="contribution-feedback" class="persistent-feedback" role="status" aria-live="polite">One contribution per browser token this round. No speed bonus.</p><p id="connection-feedback" class="field-help" role="status" aria-live="polite" hidden></p></form>
+      <div class="shared-progress"><div class="progress-header"><span>Shared garden progress</span><strong id="progress-count">0 / 12</strong></div><progress id="shared-meter" max="12" value="0" aria-label="Shared contributions toward the community goal"></progress><p id="progress-note" class="field-help">Contributions count equally across chat and companion.</p></div>
+    </section>
+    <aside class="parity-note"><span aria-hidden="true">↗</span><p>Prefer chat? Type <code>!help 1</code> for flowers, <code>!help 2</code> for shade, or <code>!help 3</code> for water. Both routes add one to the same group goal.</p></aside>
+    <p class="companion-footer"><a href="/privacy">How this prototype handles data</a> <span>·</span> No account, profile, ranking, or countdown pressure.</p>
+  </main>
+</body></html>

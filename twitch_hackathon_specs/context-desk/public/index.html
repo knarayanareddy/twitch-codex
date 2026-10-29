@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f2">
+  <meta name="description" content="A source-first live context desk for evidence-led, human-reviewed cards.">
+  <title>Context Desk — live research, carefully reviewed</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/public/styles.css">
+  <link rel="stylesheet" href="/public/overlay-card.css">
+  <script type="module" src="/public/js/app.js"></script>
+</head>
+<body>
+  <div class="login-gate" id="login-gate" hidden>
+    <main class="login-card" aria-labelledby="login-title">
+      <a class="brand brand-login" href="/" aria-label="Context Desk home"><span class="brand-mark" aria-hidden="true">C</span><span>Context <b>Desk</b></span></a>
+      <p class="eyebrow">PRIVATE REVIEW WORKSPACE</p>
+      <h1 id="login-title">A little context,<br>with receipts.</h1>
+      <p class="muted">Sign in with the local broadcaster passphrase to manage the review queue. Twitch authorization is separate and is not implied by this sign-in.</p>
+      <form id="login-form" class="stack-form">
+        <label for="passcode">Local access passphrase</label>
+        <input id="passcode" name="passcode" type="password" autocomplete="current-password" required minlength="1" aria-describedby="login-error">
+        <button class="button primary" type="submit">Open the review desk <span aria-hidden="true">→</span></button>
+        <p id="login-error" class="form-error" role="alert" hidden></p>
+      </form>
+      <p class="login-foot">Nothing appears on stream until you approve it.</p>
+    </main>
+  </div>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <a class="brand" href="#review" aria-label="Context Desk home"><span class="brand-mark" aria-hidden="true">C</span><span>Context <b>Desk</b></span></a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="review" aria-current="page">Review desk <span id="queue-count" class="nav-count" aria-live="polite" aria-atomic="true">0</span></button>
+        <button class="nav-link" data-view="recap">Published &amp; recap</button>
+        <button class="nav-link" data-view="sources">Source pack</button>
+        <button class="nav-link" data-view="settings">Setup</button>
+      </nav>
+      <div class="top-actions">
+        <span id="mode-badge" class="mode-badge">Local review</span>
+        <a id="open-overlay" class="button subtle small" href="/overlay" target="_blank" rel="noopener">Overlay <span aria-hidden="true">↗</span></a>
+        <a id="open-viewer-poll" class="button subtle small" href="/vote" target="_blank" rel="noopener">Viewer poll <span aria-hidden="true">↗</span></a>
+        <button id="logout" class="icon-button" aria-label="Sign out" title="Sign out">↗</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="view" id="view-review" aria-labelledby="page-title">
+        <div class="page-heading">
+          <div><p class="eyebrow">SOURCE-FIRST LIVE CONTEXT</p><h1 id="page-title">Review desk<span class="heading-period">.</span></h1><p class="lede">Follow the evidence first. Approve only what you can stand behind.</p></div>
+          <div class="heading-note"><span class="note-icon" aria-hidden="true">↳</span><span>Nothing appears on stream<br>until you approve it.</span></div>
+        </div>
+        <div class="desk-grid">
+          <aside class="queue-panel panel" aria-labelledby="queue-title">
+            <div class="panel-heading"><div><p class="eyebrow">INCOMING QUESTIONS</p><h2 id="queue-title">Review queue <span id="queue-count-heading" class="count-small">0</span></h2></div><button id="load-samples" class="text-button" title="Load three clearly marked local fixtures">Try the demo <span aria-hidden="true">↗</span></button></div>
+            <form id="question-form" class="question-form">
+              <label for="question-input">Add a question</label>
+              <textarea id="question-input" maxlength="280" rows="3" placeholder="Ask about a stable Solar System concept…" required></textarea>
+              <div class="form-meta"><span id="char-count">0 / 280</span><button type="submit" class="button primary small">Add to queue <span aria-hidden="true">→</span></button></div>
+              <p class="tiny muted">Plain text · 12–280 characters · no links or personal details</p>
+            </form>
+            <div class="queue-filter" role="group" aria-label="Show question queue items"><button type="button" data-queue-filter="active" aria-pressed="false">Active</button><button type="button" data-queue-filter="history" aria-pressed="false">History</button><button type="button" data-queue-filter="all" aria-pressed="true">All</button></div>
+            <div id="queue-list" class="queue-list" role="list" aria-label="Review queue and history"></div>
+            <div id="queue-empty" class="empty-queue"><span class="empty-icon" aria-hidden="true">✳</span><p>Room to think.</p><span>New questions will appear here. Start with a sample or write one above.</span></div>
+          </aside>
+          <section id="review-panel" class="review-panel panel" aria-label="Selected question and evidence">
+            <div class="no-selection" id="no-selection"><div class="open-book" aria-hidden="true">⌁</div><p class="eyebrow">A QUIETER KIND OF ANSWER</p><h2>Question the claim.<br>Keep the receipts.</h2><p>Choose a question from the queue to see what the approved source pack actually says — and what it doesn’t.</p><button class="text-button" data-view-link="sources">Explore the source pack <span aria-hidden="true">→</span></button></div>
+            <div id="review-content" hidden></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="view-recap" hidden aria-labelledby="recap-title">
+        <div class="page-heading"><div><p class="eyebrow">A RECORD, NOT A VERDICT</p><h1 id="recap-title">Published &amp; recap<span class="heading-period">.</span></h1><p class="lede">Approved context cards and their source links. Question text and viewer identities are not exported.</p></div><a class="button outline" href="/api/recap/export" id="export-recap">Export recap <span aria-hidden="true">↓</span></a></div>
+        <div id="recap-list" class="recap-list"></div><div id="recap-empty" class="empty-state" hidden><span aria-hidden="true">◌</span><h2>No cards published yet</h2><p>Approved cards will appear here for up to 24 hours.</p><button class="button outline" data-view-link="review">Back to review desk</button></div>
+      </section>
+
+      <section class="view" id="view-sources" hidden aria-labelledby="sources-title">
+        <div class="page-heading"><div><p class="eyebrow">CURATED · VERSIONED · LOCAL</p><h1 id="sources-title">The source pack<span class="heading-period">.</span></h1><p class="lede">A small, bounded reading list — not an open-web search engine or a ranking of who to trust.</p></div><span class="pack-version" id="pack-version">v1.0.0</span></div>
+        <div class="scope-banner"><div class="scope-mark" aria-hidden="true">i</div><div><h2 id="pack-title">Solar System Basics</h2><p id="pack-scope"></p><p class="scope-retention">No model is used. Raw question text and published cards expire after 24 hours.</p></div></div>
+        <div id="source-list" class="source-list"></div>
+      </section>
+
+      <section class="view" id="view-settings" hidden aria-labelledby="settings-title">
+        <div class="page-heading"><div><p class="eyebrow">CONNECTION &amp; SAFETY BOUNDARIES</p><h1 id="settings-title">Setup<span class="heading-period">.</span></h1><p class="lede">Local review is ready. Twitch authorization and live EventSub acceptance are separate steps.</p></div></div>
+        <div class="settings-grid">
+          <article class="setting-card panel"><p class="eyebrow">TOPIC &amp; SOURCES</p><h2 id="settings-pack-title">Solar System Basics</h2><p id="settings-pack-scope" class="muted"></p><p class="settings-detail"><strong>Not in scope</strong><br>Professional advice, personal accusations or private information, predictions, breaking news, and exact live object counts.</p><p class="settings-detail"><strong>Data lifecycle</strong><br>Sanitized question text, evidence proposals, review decisions, and approved cards expire after 24 hours. Export omits original question text and viewer identity.</p></article>
+          <article class="setting-card panel"><p class="eyebrow">TWITCH EVENTSUB</p><h2 id="twitch-state-title">Not connected</h2><p id="twitch-state-note" class="muted">No Twitch OAuth or live chat authorization has been performed.</p><div class="twitch-actions"><p id="twitch-oauth-copy" class="settings-detail">When configured, Twitch authorization requests only <code>user:read:chat</code> and <code>user:bot</code>. Context Desk never sends chat or performs moderation actions.</p><button id="twitch-connect" class="button outline small" type="button" disabled>Connect Twitch</button><button id="twitch-disconnect" class="button danger-outline small" type="button" hidden>Disconnect Twitch</button></div><div class="status-rule"></div><p class="settings-detail"><strong>Moderator permission</strong><br><span id="moderator-status">Role verification unavailable; moderator input is disabled. The broadcaster studio remains available.</span></p><p class="settings-detail"><strong>Fail-closed command path</strong><br>When configured, signed <code>channel.chat.message</code> events accept only a per-message broadcaster/moderator badge and the <code>!context</code> prefix. Only the authenticated broadcaster can publish.</p></article>
+          <article class="setting-card panel vote-admin-card"><p class="eyebrow">VIEWER PARTICIPATION</p><h2>Next-topic vote</h2><p class="muted">Viewers choose which safe, prewritten topic to investigate next—not whether a factual claim is true. Votes do not publish anything.</p><div id="vote-results" class="vote-results" aria-live="polite"></div><div class="vote-admin-actions"><button id="refresh-votes" class="button outline small" type="button">Refresh tally</button><button id="promote-vote" class="button primary small" type="button" disabled>Queue winning topic for review</button></div><p id="vote-admin-message" class="tiny muted"></p></article>
+          <article class="setting-card panel safety-card"><span class="safety-mark" aria-hidden="true">✓</span><div><h2>Human approval stays in the loop.</h2><p>Question text is treated as untrusted plain text. Retrieval is local and deterministic; there is no model provider or external link fetching.</p><p>Sources are allowlisted NASA/JPL links. Cards require evidence from the active pack, a reviewed preview, and an explicit broadcaster confirmation.</p></div></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>Context Desk <span class="footer-dot">·</span> Solar System Basics <span id="footer-version">v1.0.0</span></span><span>Local retrieval only <span class="footer-dot">·</span> No model used</span></footer>
+  </div>
+  <dialog id="decision-dialog" class="decision-dialog" aria-labelledby="dialog-title"><form method="dialog"><button class="dialog-close" aria-label="Close dialog">×</button><p class="eyebrow">REVIEW DECISION</p><h2 id="dialog-title">Leave a reason</h2><p id="dialog-description" class="muted">This is an internal review event. It will not be shown on stream.</p><label for="reason-select">Reason</label><select id="reason-select"><option value="">Choose a reason…</option><option value="not-relevant">Not relevant to this stream</option><option value="poor-evidence">Evidence is too weak or unclear</option><option value="unsafe">Safety or privacy concern</option><option value="out-of-scope">Outside the topic scope</option><option value="other">Other review reason</option></select><div class="dialog-actions"><button class="button outline" value="cancel">Go back</button><button class="button dark" id="decision-submit" value="confirm">Save decision</button></div></form></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

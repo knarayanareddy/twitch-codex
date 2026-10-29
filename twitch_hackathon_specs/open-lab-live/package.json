@@ -1,0 +1,20 @@
+{
+  "name": "open-lab-live",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A source-backed, deterministic experiment for participatory science streams.",
+  "engines": { "node": ">=20.11" },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e",
+    "test:coverage": "node --experimental-test-coverage --test",
+    "demo:record": "node scripts/record-local-demo.js",
+    "check": "for f in $(find src public/js test e2e scripts -name '*.js'); do node --check \"$f\" || exit 1; done && npm test"
+  },
+  "dependencies": { "better-sqlite3": "^12.4.1", "dotenv": "^16.6.1" },
+  "devDependencies": { "@axe-core/playwright": "^4.13.0", "@playwright/test": "^1.64.1" }
+}
