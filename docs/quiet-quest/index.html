@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#fbf7ef">
+  <title>Quiet Quest · Studio</title><link rel="icon" href="./mark.svg" type="image/svg+xml"><link rel="stylesheet" href="./css/app.css"><script src="./js/mock-backend.js"></script><script type="module" src="./js/studio.js"></script>
+</head>
+<body>
+  <div id="login" class="login-wrap" hidden>
+    <main class="login-card" aria-labelledby="login-title">
+      <a class="brand" href="/" aria-label="Quiet Quest studio"><span class="brand-mark" aria-hidden="true">Q</span><span>Quiet <strong>Quest</strong></span></a>
+      <p class="eyebrow">A COOPERATIVE GAME · NO RUSH</p><h1 id="login-title">A shared goal,<br>on everyone’s terms.</h1>
+      <p class="copy">Open the streamer studio with your local operator passphrase. Demo mode is simulated; it does not connect to Twitch.</p>
+      <form id="login-form" class="stack-form"><label for="passcode">Operator passphrase</label><input id="passcode" type="password" autocomplete="current-password" required><button class="button primary" type="submit">Open studio <span aria-hidden="true">→</span></button><p id="login-error" class="error" role="alert" hidden></p></form>
+      <p class="quiet-note">No speed bonus. No leaderboard. One contribution per route each round.</p>
+    </main>
+  </div>
+
+  <div id="studio" hidden>
+    <header class="topbar"><a class="brand" href="./index.html" aria-label="Quiet Quest studio"><span class="brand-mark" aria-hidden="true">Q</span><span>Quiet <strong>Quest</strong></span></a><nav class="nav" aria-label="Studio sections"><a href="#control-room">Control room</a><a href="#recap">Recap</a><a href="./privacy.html">Privacy</a></nav><div class="top-status"><span id="demo-badge" class="badge">Local simulator</span><button id="logout" class="button ghost small" type="button">Sign out</button></div></header>
+    <main class="page-shell">
+      <section class="intro-grid"><div><p class="eyebrow">WARM, QUIET CO-OP</p><h1>Make room for<br>every kind of helper<span>.</span></h1><p class="lead">A three-minute shared garden goal. Contribute by chat or a calm companion page—at your own pace.</p></div><aside class="principle-card"><span class="principle-icon" aria-hidden="true">↗</span><p><strong>One helpful action.</strong><br>Three equal choices. No speed bonus. No public ranks.</p></aside></section>
+
+      <section id="setup" class="panel setup-panel" aria-labelledby="setup-title"><div class="section-head"><div><p class="eyebrow">START A SESSION</p><h2 id="setup-title">Choose your room</h2></div><span id="twitch-label" class="connection-label">Twitch not connected</span></div>
+        <div class="setup-grid"><article class="mode-card demo-card"><span class="mode-icon" aria-hidden="true">✳</span><div><h3>Demo</h3><p>Local simulation for practice and testing. Simulated chat is clearly labelled.</p></div><button id="start-demo" class="button primary" type="button">Start demo round <span aria-hidden="true">→</span></button></article>
+          <article class="mode-card live-card"><span class="mode-icon" aria-hidden="true">◉</span><div><h3>Live on Twitch</h3><p>Read only the broadcaster’s chat command <code>!help 1</code>, <code>!help 2</code>, or <code>!help 3</code>.</p></div><div class="live-actions"><a id="twitch-authorize" class="button outline" href="/auth/twitch/start" hidden>Authorize Twitch chat</a><button id="start-live" class="button outline" type="button" disabled>Connect Twitch first</button><button id="twitch-disconnect" class="text-button" type="button" hidden>Disconnect</button></div></article></div>
+        <p id="setup-message" class="inline-status" role="status" aria-live="polite">Demo works offline. Live chat requires broadcaster authorization and a public connection to Twitch EventSub.</p>
+      </section>
+
+      <section id="control-room" class="panel room-panel" aria-labelledby="room-title"><div class="section-head room-heading"><div><p class="eyebrow">CONTROL ROOM</p><h2 id="room-title">Your shared objective</h2></div><div class="room-head-status"><span id="phase-badge" class="phase-badge">No active session</span><span id="round-clock" class="clock" aria-label="Round time remaining">—</span></div></div>
+        <div id="no-session" class="no-session"><div class="garden-sketch" aria-hidden="true"><span>✿</span><span>↟</span><span>⌂</span></div><h3>Start a round to open the garden.</h3><p>Share the same action through chat or the accessible companion page. The result is a group total, never a race.</p></div>
+        <div id="active-session" class="active-session" hidden>
+          <div class="goal-row"><div><p class="eyebrow">ROUND <span id="round-number">1</span> · SHARED GOAL</p><h3 id="goal-title">Build a community festival garden</h3><p class="goal-instruction">Choose one of three ways to help; no speed bonus.</p></div><div class="goal-score"><strong id="goal-total">0</strong><span>of <span id="goal-target">12</span> contributions</span></div></div>
+          <div class="meter-wrap"><progress id="team-meter" max="12" value="0" aria-label="Team contributions toward the shared goal"></progress><div class="meter-labels"><span>Community garden progress</span><span id="meter-summary">0 / 12 · all actions count equally</span></div></div>
+          <div class="contribution-grid" id="action-counts"></div>
+          <div class="parity-row"><div><span class="parity-icon" aria-hidden="true">☷</span><p><strong>Chat</strong><span id="chat-count">0 contributions</span></p></div><div><span class="parity-icon" aria-hidden="true">⌨</span><p><strong>Companion</strong><span id="companion-count">0 contributions</span></p></div><span id="connection-detail" class="connection-detail">Simulated chat</span></div>
+          <div id="result-panel" class="result-panel" hidden><span class="result-mark" aria-hidden="true">✿</span><div><p class="eyebrow">ROUND RESULT · EVERY CONTRIBUTION COUNTS</p><p id="result-copy"></p></div></div>
+          <div class="participation-block"><p class="eyebrow">PARTICIPATION INSTRUCTIONS · MIRRORED ON STREAM</p><p id="instructions-copy">Chat: !help 1, !help 2, or !help 3. Companion: choose an action and submit. One contribution per route this round; speed does not matter.</p></div>
+          <div id="companion-share" class="share-block"><div><p class="eyebrow">COMPANION LINK · TEMPORARY</p><p id="share-explainer">The browser token is anonymous and is not linked to Twitch identity.</p></div><div class="share-code"><code id="companion-code">Available after session start</code><button id="copy-companion" class="button small ghost" type="button">Copy link</button><button id="rotate-invite" class="text-button" type="button">New code</button></div></div>
+          <div class="control-row"><div class="companion-toggle"><label class="switch-label"><input id="companion-enabled" type="checkbox"><span>Companion input enabled</span></label><span id="toggle-note">Turn off to pause browser contributions.</span></div><div class="session-controls"><button id="pause-resume" class="button outline" type="button">Pause round</button><button id="close-round" class="button outline" type="button">Close round</button><button id="next-round" class="button primary" type="button" hidden>Start next round</button><a id="open-overlay" class="button ghost small" href="./overlay.html" target="_blank" rel="noopener">Overlay source ↗</a><a id="open-companion" class="button ghost small" href="./companion.html" target="_blank" rel="noopener">Companion ↗</a><button id="end-session" class="button danger" type="button">End session</button><button id="reset-session" class="button ghost" type="button">Reset</button></div></div>
+          <div id="demo-tools" class="demo-tools" hidden><div><p class="eyebrow">LOCAL TEST INPUT</p><strong>Simulate a chat command</strong><span>Clearly marked fixture; it is not a Twitch event.</span></div><label>Demo participant<select id="demo-actor"><option value="sample-1">Sample participant A</option><option value="sample-2">Sample participant B</option><option value="sample-3">Sample participant C</option></select></label><label>Action<select id="demo-action"></select></label><button id="simulate-chat" class="button ghost small" type="button">Simulate chat contribution</button><span id="demo-feedback" role="status" aria-live="polite"></span></div>
+        </div>
+      </section>
+
+      <section class="instructions-strip" aria-label="The rules"><div><span>01</span><p><strong>One per route.</strong> One chat contribution and one companion contribution per participant each round.</p></div><div><span>02</span><p><strong>Equal value.</strong> Every choice adds one to the same group goal.</p></div><div><span>03</span><p><strong>No rush.</strong> The window stays open for three minutes unless the streamer closes it.</p></div></section>
+
+      <section id="recap" class="panel recap-panel" aria-labelledby="recap-title"><div class="section-head"><div><p class="eyebrow">GROUP OUTCOME · NO INDIVIDUAL DATA</p><h2 id="recap-title">Session recap</h2></div><a id="export-recap" class="button ghost small" href="/api/recap/export">Export aggregate CSV</a></div><div id="recap-list" class="recap-list"><p class="empty-copy">Completed rounds will appear here as aggregate totals only.</p></div></section>
+      <footer class="footer"><span>Quiet Quest <span aria-hidden="true">·</span> A prototype, not an accessibility certification.</span><span>No viewer usernames, ranks, or raw chat messages are stored. The authorized broadcaster’s channel login is retained for the Twitch connection.</span></footer>
+    </main>
+  </div>
+  <dialog id="confirm-dialog" class="confirm-dialog" aria-labelledby="confirm-title"><form method="dialog"><p class="eyebrow">STREAMER CONTROL</p><h2 id="confirm-title">Confirm action</h2><p id="confirm-copy">This action changes the shared session.</p><div class="dialog-actions"><button class="button ghost" value="cancel">Keep playing</button><button id="confirm-action" class="button danger" value="confirm">Confirm</button></div></form></dialog>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body></html>

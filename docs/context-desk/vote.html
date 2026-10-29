@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f2">
+  <title>Choose the next topic · Context Desk</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./vote.css">
+  <script src="./js/mock-backend.js"></script>
+  <script type="module" src="./js/vote.js"></script>
+</head>
+<body>
+  <header class="vote-masthead"><a href="./vote.html" class="vote-brand"><span class="vote-mark" aria-hidden="true">C</span><span>Context <b>Desk</b></span></a><span class="vote-label">VIEWER QUESTION PICK</span></header>
+  <main class="vote-main">
+    <p class="eyebrow">YOUR CURIOSITY, NEXT</p>
+    <h1>What should we<br>look into next<span class="period">?</span></h1>
+    <p class="intro">Choose a topic for the broadcaster to review. This is a vote about what to investigate next—not a vote on whether a fact is true.</p>
+    <section class="vote-panel" aria-labelledby="poll-title">
+      <div class="poll-heading"><div><p class="eyebrow">SOLAR SYSTEM BASICS</p><h2 id="poll-title">Pick one research question</h2></div><span class="poll-live"><span></span> OPEN · 24-HOUR TALLY</span></div>
+      <form id="vote-form">
+        <fieldset id="choices" class="choices" aria-describedby="vote-note"></fieldset>
+        <p id="vote-note" class="vote-note">Your vote is stored under a rotating anonymous browser token only. No name or chat account is requested.</p>
+        <div class="vote-form-footer"><p id="vote-feedback" class="vote-feedback" role="status" aria-live="polite">Loading the topic choices…</p><button id="submit-vote" class="vote-button" type="submit" disabled>Cast my vote <span aria-hidden="true">→</span></button></div>
+      </form>
+    </section>
+    <div class="vote-guardrail"><span aria-hidden="true">↳</span><p>The winning prompt is only a suggestion. A broadcaster reviews its sources and approves any context card separately. No vote, draft, or viewer-submitted text appears on stream automatically.</p></div>
+  </main>
+  <footer class="vote-footer"><span>Context Desk · Solar System Basics</span><span>Evidence first. Human review always.</span></footer>
+</body>
+</html>

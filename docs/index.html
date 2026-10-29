@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e0e10">
+  <title>TwitchCon Codex Hackathon — Interactive Demo Hub</title>
+  <style>
+    :root {
+      --bg: #0e0e10;
+      --card-bg: #18181b;
+      --card-border: #2e2e35;
+      --accent: #9146ff;
+      --accent-hover: #772ce8;
+      --text: #efeff1;
+      --text-muted: #adadb8;
+      --success: #00f59b;
+      --warning: #ffb340;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2.5rem 1.5rem;
+    }
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.75rem;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(145, 70, 255, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(145, 70, 255, 0.4);
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .badge-success {
+      background: rgba(0, 245, 155, 0.12);
+      color: var(--success);
+      border-color: rgba(0, 245, 155, 0.35);
+    }
+    .badge-warning {
+      background: rgba(255, 179, 64, 0.12);
+      color: var(--warning);
+      border-color: rgba(255, 179, 64, 0.35);
+    }
+    h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    h1 span {
+      color: var(--accent);
+    }
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 800px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card-featured {
+      grid-column: 1 / -1;
+      background: linear-gradient(145deg, #18181b 0%, #1e1b2e 100%);
+      border-color: rgba(145, 70, 255, 0.5);
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .tag {
+      background: #27272a;
+      color: #d4d4d8;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: auto;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+    .btn-secondary {
+      background: #27272a;
+      color: var(--text);
+    }
+    .btn-secondary:hover {
+      background: #3f3f46;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+    }
+    .btn-outline:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      gap: 1rem;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">TwitchCon Codex Hackathon 2026</div>
+      <h1>Interactive <span>Demo Hub</span></h1>
+      <p class="lead">Four production-grade Twitch participation prototypes designed for streamer authority, ethical audience interaction, and broadcast-first overlay graphics.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Card 1: Habitat Relay -->
+      <article class="card card-featured">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-success">🏆 Flagship Submission</span>
+            <span class="tag">🟢 Live on Cloud (Render)</span>
+            <span class="tag">123 Tests Passed (94% Coverage)</span>
+            <span class="tag">Full EventSub WebSocket</span>
+          </div>
+          <h2>Habitat Relay — Pollinator Corridor Simulation</h2>
+          <p>A streamer-led, community-powered ecosystem simulation. Viewers vote (<code style="color:var(--accent);">!habitat 1</code> / <code style="color:var(--accent);">!habitat 2</code>) on ecological interventions within a strict 6-token fictional budget. Features full streamer approval on every round, safe undo, dynamic SVG landscape progression, and verified citations from the European Environment Agency and UN FAO.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="https://habitat-relay.onrender.com" target="_blank" rel="noopener">Launch Live Cloud Studio ↗</a>
+          <a class="btn btn-secondary" href="https://habitat-relay.onrender.com/?view=overlay" target="_blank" rel="noopener">OBS Overlay Source ↗</a>
+          <a class="btn btn-outline" href="https://github.com/knarayanareddy/habitat-relay" target="_blank" rel="noopener">Standalone GitHub Repo ↗</a>
+        </div>
+      </article>
+
+      <!-- Card 2: Context Desk -->
+      <article class="card">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-warning">Interactive Web Demo</span>
+            <span class="tag">39 Tests Passed</span>
+            <span class="tag">NASA/JPL Fact Pack</span>
+          </div>
+          <h2>Context Desk</h2>
+          <p>A calm newsroom research desk designed to combat live stream misinformation. Turns moderator questions (<code style="color:var(--accent);">!context &lt;question&gt;</code>) into verified evidence cards with uncertainty caveats and transparent OBS overlay cards.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="./context-desk/index.html">Open Review Studio ↗</a>
+          <a class="btn btn-secondary" href="./context-desk/overlay.html?session=demo-session-context-desk-12345678" target="_blank" rel="noopener">OBS Card Overlay ↗</a>
+          <a class="btn btn-outline" href="./context-desk/vote.html?session=demo-session-context-desk-12345678" target="_blank" rel="noopener">Viewer Poll ↗</a>
+        </div>
+      </article>
+
+      <!-- Card 3: Quiet Quest -->
+      <article class="card">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-warning">Interactive Web Demo</span>
+            <span class="tag">24 Tests Passed</span>
+            <span class="tag">Cross-Tab Realtime Sync</span>
+          </div>
+          <h2>Quiet Quest</h2>
+          <p>An access-first cooperative community game designed for low-pressure participation. Full parity between Twitch chat (<code style="color:var(--accent);">!help 1-3</code>) and a mobile-friendly, keyboard-accessible web companion. No speed bonuses, no leaderboards, no viewer callouts.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="./quiet-quest/index.html">Open Studio ↗</a>
+          <a class="btn btn-secondary" href="./quiet-quest/companion.html#code=QUIET123" target="_blank" rel="noopener">Companion Web App ↗</a>
+          <a class="btn btn-outline" href="./quiet-quest/overlay.html" target="_blank" rel="noopener">OBS Progress Meter ↗</a>
+        </div>
+      </article>
+
+      <!-- Card 4: Open Lab Live -->
+      <article class="card">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-warning">Interactive Web Demo</span>
+            <span class="tag">12 Tests Passed</span>
+            <span class="tag">NASA Albedo Science</span>
+          </div>
+          <h2>Open Lab Live</h2>
+          <p>Participatory science stream experiment format: <strong>Predict → Choose → Reveal → Learn</strong>. Audience predicts surface absorption (<code style="color:var(--accent);">!predict 1-3</code>), operator runs a deterministic seeded model conserving energy units, and reveals the source-backed explanation.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="./open-lab-live/index.html">Open Field Notebook ↗</a>
+          <a class="btn btn-secondary" href="./open-lab-live/overlay.html?preview=1" target="_blank" rel="noopener">OBS Experiment Overlay ↗</a>
+        </div>
+      </article>
+    </div>
+
+    <footer>
+      <div>
+        Built for the <strong>TwitchCon Codex Hackathon</strong> (Submission Cutoff: November 2, 2026 at 5:00 PM EST).
+      </div>
+      <div>
+        <a href="https://github.com/knarayanareddy/twitch-codex" target="_blank" rel="noopener">View Full Project Suite on GitHub ↗</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
